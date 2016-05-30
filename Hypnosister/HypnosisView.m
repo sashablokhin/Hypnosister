@@ -10,6 +10,14 @@
 
 @implementation HypnosisView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setBackgroundColor:[UIColor clearColor]];
+    }
+    return self;
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -27,16 +35,23 @@
     
     // Радиус окружности примерно соответствует размеру представления
     // hypot - возвращает гипотенузу
-    float maxRadius = hypot(bounds.size.width, bounds.size.height) / 4.0;
+    //float maxRadius = hypot(bounds.size.width, bounds.size.height) / 4.0;
+    float maxRadius = hypot(bounds.size.width, bounds.size.height) / 2.0;
     
     CGContextSetLineWidth(context, 10); // толщина линии
     CGContextSetRGBStrokeColor(context, 0.6, 0.6, 0.6, 1.0); // цвет линии
     
     // Добавление фигуры к контексту - не выполняется рисование фигуры
-    CGContextAddArc(context, center.x, center.y, maxRadius, 0.0, M_PI * 2.0, true);
+    //CGContextAddArc(context, center.x, center.y, maxRadius, 0.0, M_PI * 2.0, true);
     
-    // Выполнение инструкций по рисованию; рисование текущей фигуры с данным состоянием
-    CGContextStrokePath(context);
+    // Рисование концентрических окружностей от центра
+    for (float currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20) {
+        // Добавление контура в контекст
+        CGContextAddArc(context, center.x, center.y, currentRadius, 0.0, M_PI * 2.0, true);
+        
+        // Выполнение инструкций по рисованию; рисование текущей фигуры с данным состоянием
+        CGContextStrokePath(context);
+    }
     
 }
 
