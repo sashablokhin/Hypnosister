@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
+        [self setCircleColor:[UIColor lightGrayColor]];
     }
     return self;
 }
@@ -40,7 +41,7 @@
     
     CGContextSetLineWidth(context, 10); // толщина линии
     //CGContextSetRGBStrokeColor(context, 0.6, 0.6, 0.6, 1.0); // цвет линии
-    [[UIColor lightGrayColor] setStroke];
+    [[self circleColor] setStroke];
     
     // Добавление фигуры к контексту - не выполняется рисование фигуры
     //CGContextAddArc(context, center.x, center.y, maxRadius, 0.0, M_PI * 2.0, true);
@@ -83,6 +84,24 @@
     
 }
 
+- (void)setCircleColor:(UIColor *)circleColor {
+    _circleColor = circleColor;
+    [self setNeedsDisplay]; // для перерисовки контекста
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return true;
+}
+
+// Отправка первому респондеру сообщения в случае сотрясения пользователем устройства
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    
+    if (motion == UIEventSubtypeMotionShake) {
+        NSLog(@"Device started shaking!");
+        [self setCircleColor:[UIColor redColor]];
+    }
+    
+}
 
 @end
 
