@@ -39,7 +39,8 @@
     float maxRadius = hypot(bounds.size.width, bounds.size.height) / 2.0;
     
     CGContextSetLineWidth(context, 10); // толщина линии
-    CGContextSetRGBStrokeColor(context, 0.6, 0.6, 0.6, 1.0); // цвет линии
+    //CGContextSetRGBStrokeColor(context, 0.6, 0.6, 0.6, 1.0); // цвет линии
+    [[UIColor lightGrayColor] setStroke];
     
     // Добавление фигуры к контексту - не выполняется рисование фигуры
     //CGContextAddArc(context, center.x, center.y, maxRadius, 0.0, M_PI * 2.0, true);
@@ -53,7 +54,43 @@
         CGContextStrokePath(context);
     }
     
+    // Создание строки
+    NSString *text = @"You are getting sleepy.";
+    
+    // Получение шрифта для его рисования
+    UIFont *font = [UIFont boldSystemFontOfSize:28];
+    
+    CGRect textRect;
+    NSDictionary *attributes = @{NSFontAttributeName: font};
+    
+    // Насколько велика строка при рисовании этим шрифтом?
+    textRect.size = [text sizeWithAttributes:attributes];
+    
+    // Поместим строку в центр представления
+    textRect.origin.x = center.x - textRect.size.width / 2.0;
+    textRect.origin.y = center.y - textRect.size.height / 2.0;
+    
+    [[UIColor blackColor] setFill];
+    
+    CGSize offset = CGSizeMake(4, 3);
+    CGColorRef color = [[UIColor darkGrayColor] CGColor];
+    
+    // Установка тени контекста, все последующие рисунки будут с эффектом тени
+    CGContextSetShadowWithColor(context, offset, 2.0, color);
+    
+    // Рисование строки
+    [text drawInRect:textRect withAttributes:attributes];
+    
 }
 
 
 @end
+
+
+
+
+
+
+
+
+
