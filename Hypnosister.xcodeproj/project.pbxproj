@@ -14,6 +14,7 @@
 		AB30E7A71CF7331F00C985B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB30E7A61CF7331F00C985B2 /* Assets.xcassets */; };
 		AB30E7AA1CF7331F00C985B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB30E7A81CF7331F00C985B2 /* LaunchScreen.storyboard */; };
 		AB30E7B31CF739CF00C985B2 /* HypnosisView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7B21CF739CF00C985B2 /* HypnosisView.m */; };
+		AB30E7B61CFC4C9900C985B2 /* LogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7B51CFC4C9900C985B2 /* LogoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		AB30E7AB1CF7331F00C985B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB30E7B11CF739CF00C985B2 /* HypnosisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HypnosisView.h; sourceTree = "<group>"; };
 		AB30E7B21CF739CF00C985B2 /* HypnosisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HypnosisView.m; sourceTree = "<group>"; };
+		AB30E7B41CFC4C9900C985B2 /* LogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoView.h; sourceTree = "<group>"; };
+		AB30E7B51CFC4C9900C985B2 /* LogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				AB30E7A11CF7331F00C985B2 /* ViewController.m */,
 				AB30E7B11CF739CF00C985B2 /* HypnosisView.h */,
 				AB30E7B21CF739CF00C985B2 /* HypnosisView.m */,
+				AB30E7B41CFC4C9900C985B2 /* LogoView.h */,
+				AB30E7B51CFC4C9900C985B2 /* LogoView.m */,
 				AB30E7A31CF7331F00C985B2 /* Main.storyboard */,
 				AB30E7A61CF7331F00C985B2 /* Assets.xcassets */,
 				AB30E7A81CF7331F00C985B2 /* LaunchScreen.storyboard */,
@@ -155,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB30E7A21CF7331F00C985B2 /* ViewController.m in Sources */,
+				AB30E7B61CFC4C9900C985B2 /* LogoView.m in Sources */,
 				AB30E7B31CF739CF00C985B2 /* HypnosisView.m in Sources */,
 				AB30E79F1CF7331F00C985B2 /* AppDelegate.m in Sources */,
 				AB30E79C1CF7331F00C985B2 /* main.m in Sources */,

@@ -76,11 +76,28 @@
     CGSize offset = CGSizeMake(4, 3);
     CGColorRef color = [[UIColor darkGrayColor] CGColor];
     
+    CGContextSaveGState(context);
+    
     // Установка тени контекста, все последующие рисунки будут с эффектом тени
     CGContextSetShadowWithColor(context, offset, 2.0, color);
     
     // Рисование строки
     [text drawInRect:textRect withAttributes:attributes];
+    
+    // Серебрянная задача:
+    
+    CGContextRestoreGState(context);
+    
+    CGContextMoveToPoint(context, center.x - 20, center.y);
+    CGContextAddLineToPoint(context, center.x + 20, center.y);
+    
+    CGContextMoveToPoint(context, center.x, center.y - 20);
+    CGContextAddLineToPoint(context, center.x, center.y + 20);
+    
+    CGContextSetLineWidth(context, 5);
+    [[UIColor greenColor] setStroke];
+    
+    CGContextStrokePath(context);
     
 }
 

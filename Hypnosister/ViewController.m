@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "HypnosisView.h"
+#import "LogoView.h"
 
 @interface ViewController () <UIScrollViewDelegate>
 
@@ -58,11 +59,19 @@
     
     [self.hypnosisView becomeFirstResponder]; // что бы наш вью принимал события
     
+    LogoView *logo = [[LogoView alloc] initWithFrame:CGRectMake(30, 30, 100, 100)];
+    
+    [self.hypnosisView addSubview:logo];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return true;
 }
 
 #pragma mark - UIScrollViewDelegate
