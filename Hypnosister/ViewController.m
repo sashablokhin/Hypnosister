@@ -9,7 +9,9 @@
 #import "ViewController.h"
 #import "HypnosisView.h"
 
-@interface ViewController ()
+@interface ViewController () <UIScrollViewDelegate>
+
+@property (nonatomic, strong) HypnosisView *hypnosisView;
 
 @end
 
@@ -25,20 +27,36 @@
     
     // Создание UIScrollView таким образом, чтобы размер окна соответствовал размеру области прокрутки
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
+    //[scrollView setPagingEnabled:true];
+    
+    
+    // Масштабирование
+    
+    [scrollView setMinimumZoomScale:1.0];
+    [scrollView setMaximumZoomScale:5.0];
+    
+    scrollView.delegate = self;
+    
+    // -----
+    
     [self.view addSubview:scrollView];
     
     // Создание HypnosisView с фреймом, который в два раза больше размера экрана
     CGRect bigRect = screenRect;
-    bigRect.size.width *= 2.0;
-    bigRect.size.height *= 2.0;
     
-    HypnosisView *view = [[HypnosisView alloc] initWithFrame:bigRect];
+    //bigRect.size.width *= 2.0;
     
-    [scrollView addSubview:view];
+    self.hypnosisView = [[HypnosisView alloc] initWithFrame:screenRect];
+    [scrollView addSubview:self.hypnosisView];
+    
+    // Перемещение прямоугольника для другого HypnosisView, находящегося справа, за границей экрана
+    //screenRect.origin.x = screenRect.size.width;
+    //HypnosisView *anotherView = [[HypnosisView alloc] initWithFrame:screenRect];
+    //[scrollView addSubview:anotherView];
+    
     [scrollView setContentSize:bigRect.size];
     
-    [view becomeFirstResponder]; // что бы наш вью принимал события
-    
+    [self.hypnosisView becomeFirstResponder]; // что бы наш вью принимал события
     
 }
 
@@ -47,4 +65,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.hypnosisView;
+}
+
 @end
+
+
+
+
+
+
+
